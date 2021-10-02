@@ -1,4 +1,4 @@
-	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""               
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""               
 "               
 "               ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
 "               ██║   ██║██║████╗ ████║██╔══██╗██╔════╝
@@ -45,14 +45,16 @@ call plug#begin('~/.vim/plugged')
 	Plug 'mhinz/vim-startify'
 	Plug 'roxma/nvim-yarp'
 	Plug 'ncm2/ncm2'
+	Plug 'f-person/git-blame.nvim'
+	Plug 'airblade/vim-gitgutter'
 	
+
 	" IMPORTANT only plugins of autocomplete source from here
 	Plug 'ncm2/ncm2-cssomni' " CSS
 	Plug 'ncm2/ncm2-tern' " Javascript
 	Plug 'mhartington/nvim-typescript' " Typescript
 	Plug 'ncm2/ncm2-jedi' "Python
 	Plug 'ncm2/ncm2-pyclang' " C/C++
-
 
 call plug#end()
 
@@ -98,8 +100,14 @@ noremap <c-right> <c-w>>
 " Autocloses html tags
 autocmd FileType xml,html,htm inoremap </ </<C-x><C-o>
 
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+
 " Have nerdtree ignore certain files and directories.
-let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
+let NERDTreeIgnore=['\.git$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.gif$', '\.db$']
 
 " }}}
 
@@ -136,7 +144,8 @@ hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=NONE guibg=#204a87 gui=NONE
 " NERDTREE
 " Close NERDTREE if it is the only window in the buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-autocmd FileType xml,html inoremap </ </<C-x><C-o>
+nnoremap <c-b> :NERDTree<CR>
+nnoremap <c-v> :NERDTreeClose<CR>
 
 " Startify
 let g:startify_custom_header = [
@@ -163,6 +172,5 @@ set completeopt=noinsert,menuone,noselect
 set shortmess+=c
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 
 
