@@ -47,7 +47,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'ncm2/ncm2'
 	Plug 'f-person/git-blame.nvim'
 	Plug 'airblade/vim-gitgutter'
-	
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
 
 	" IMPORTANT only plugins of autocomplete source from here
 	Plug 'ncm2/ncm2-cssomni' " CSS
@@ -121,7 +122,7 @@ set background=dark
 let g:airline_powerline_fonts=1
 
 let g:airline#extensions#tabline#enabled=1
-let g:airline_section_z = airline#section#create(['windowswap', 'obsession', '%3p%%'])
+let g:airline_section_z = "%p%% : %l/%L: Col:%c"
 
 
 " Highlight TODO, FIXME, NOTE, etc.
@@ -146,6 +147,7 @@ hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=NONE guibg=#204a87 gui=NONE
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 nnoremap <c-b> :NERDTree<CR>
 nnoremap <c-v> :NERDTreeClose<CR>
+let NERDTreeQuitOnOpen=1
 
 " Startify
 let g:startify_custom_header = [
@@ -173,4 +175,7 @@ set shortmess+=c
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+" FZF
+" remeber to https://github.com/BurntSushi/ripgrep
+nnoremap <c-f> :Rg<CR>
 
