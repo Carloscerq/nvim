@@ -33,29 +33,31 @@ set history=100
 set wildmenu
 set wildmode=list:longest
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf
+filetype indent on
+set smartindent
 
 " Plugins
 
 call plug#begin('~/.vim/plugged')
-	Plug 'preservim/nerdtree'
-	Plug 'dense-analysis/ale'
-	Plug 'rakr/vim-one'
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
-	Plug 'mhinz/vim-startify'
-	Plug 'roxma/nvim-yarp'
-	Plug 'ncm2/ncm2'
-	Plug 'f-person/git-blame.nvim'
-	Plug 'airblade/vim-gitgutter'
-	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-	Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
+Plug 'dense-analysis/ale'
+Plug 'rakr/vim-one'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mhinz/vim-startify'
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2'
+Plug 'f-person/git-blame.nvim'
+Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
-	" IMPORTANT only plugins of autocomplete source from here
-	Plug 'ncm2/ncm2-cssomni' " CSS
-	Plug 'ncm2/ncm2-tern' " Javascript
-	Plug 'mhartington/nvim-typescript' " Typescript
-	Plug 'ncm2/ncm2-jedi' "Python
-	Plug 'ncm2/ncm2-pyclang' " C/C++
+" IMPORTANT only plugins of autocomplete source from here
+Plug 'ncm2/ncm2-cssomni' " CSS
+Plug 'ncm2/ncm2-tern',  {'do': 'npm install'} " Javascript
+Plug 'mhartington/nvim-typescript' " Typescript
+Plug 'ncm2/ncm2-jedi' "Python
+Plug 'ncm2/ncm2-pyclang' " C/C++
 
 call plug#end()
 
@@ -98,8 +100,15 @@ noremap <c-down> <c-w>-
 noremap <c-left> <c-w><
 noremap <c-right> <c-w>>
 
+" ident
+nnoremap <c-i> gg =G<CR>
+
 " Autocloses html tags
-autocmd FileType xml,html,htm inoremap </ </<C-x><C-o>
+autocmd FileType xml,html inoremap </ </<C-x><C-o>
+
+" Tabs
+nnoremap <c-Left> :tabprevious<CR>
+nnoremap <c-Right> :tabnext<CR>
 
 inoremap " ""<left>
 inoremap ' ''<left>
@@ -127,13 +136,13 @@ let g:airline_section_z = "%p%% : %l/%L: Col:%c"
 
 " Highlight TODO, FIXME, NOTE, etc.
 if has('autocmd') && v:version > 701
-    augroup todo
-        autocmd!
-        autocmd Syntax * call matchadd(
-                    \ 'Debug',
-						\ '\v\zs<(NOTE|INFO|IDEA|TODO|FIXME|CHANGED|XXX|BUG|HACK|TRICKY|IMPORTANT)>'
-                    \ )
-    augroup END
+	augroup todo
+		autocmd!
+		autocmd Syntax * call matchadd(
+					\ 'Debug',
+					\ '\v\zs<(NOTE|INFO|IDEA|TODO|FIXME|CHANGED|XXX|BUG|HACK|TRICKY|IMPORTANT)>'
+					\ )
+	augroup END
 endif
 " VISUAL OF THE MENU
 hi Pmenu ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#64666d gui=NONE
@@ -148,6 +157,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 nnoremap <c-b> :NERDTree<CR>
 nnoremap <c-v> :NERDTreeClose<CR>
 let NERDTreeQuitOnOpen=1
+let NERDTreeShowHidden=1
 
 " Startify
 let g:startify_custom_header = [
@@ -165,7 +175,7 @@ let g:startify_custom_header = [
 			\'   ⢑⢕⠃⡈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢃⢕⢕⢕', 
 			\'   ⣆⢕⠄⢱⣄⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⢁⢕⢕⠕⢁',
 			\'   ⣿⣦⡀⣿⣿⣷⣶⣬⣍⣛⣛⣛⡛⠿⠿⠿⠛⠛⢛⣛⣉⣭⣤⣂⢜⠕⢑⣡⣴⣿',
-	\]
+			\]
 
 " NCM2
 "
