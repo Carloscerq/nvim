@@ -54,10 +54,10 @@ Plug 'junegunn/fzf.vim'
 
 " IMPORTANT only plugins of autocomplete source from here
 Plug 'ncm2/ncm2-cssomni' " CSS
-Plug 'ncm2/ncm2-tern',  {'do': 'npm install'} " Javascript
 Plug 'mhartington/nvim-typescript' " Typescript
 Plug 'ncm2/ncm2-jedi' "Python
 Plug 'ncm2/ncm2-pyclang' " C/C++
+Plug 'ncm2/ncm2-tern',  {'do': 'npm install'} " Javascript, may need aditional suport in the .vim folder.
 
 call plug#end()
 
