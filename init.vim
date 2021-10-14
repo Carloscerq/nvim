@@ -35,13 +35,12 @@ set wildmode=list:longest
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf
 filetype indent on
 set smartindent
-
 " Plugins
 
 call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
 Plug 'dense-analysis/ale'
-Plug 'rakr/vim-one'
+Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-startify'
@@ -124,8 +123,9 @@ let NERDTreeIgnore=['\.git$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', 
 
 " VISUAL
 "
-colorscheme one
-set background=dark
+colorscheme nord
+hi Comment guifg=#de54d5 ctermfg=blue
+
 " AIRLINE ++++++++++++++++++++++++++++++++++++++++++++++++
 " Disable this if dont want to use the > and < arrow tips!
 let g:airline_powerline_fonts=1
@@ -184,6 +184,12 @@ set completeopt=noinsert,menuone,noselect
 set shortmess+=c
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" path to directory where libclang.so can be found
+let g:ncm2_pyclang#library_path = '/usr/lib/llvm-5.0/lib'
+
+" or path to the libclang.so file
+let g:ncm2_pyclang#library_path = '/usr/lib64/libclang.so.5.0'
 
 " FZF
 " remeber to https://github.com/BurntSushi/ripgrep
