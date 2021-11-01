@@ -40,16 +40,17 @@ set smartindent
 call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
 Plug 'dense-analysis/ale'
-Plug 'arcticicestudio/nord-vim'
+" "Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'mhinz/vim-startify'
+" Plug 'mhinz/vim-startify'
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'
 Plug 'f-person/git-blame.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'ghifarit53/tokyonight-vim'
 
 " IMPORTANT only plugins of autocomplete source from here
 Plug 'ncm2/ncm2-cssomni' " CSS
@@ -109,12 +110,6 @@ autocmd FileType xml,html inoremap </ </<C-x><C-o>
 nnoremap <c-Left> :tabprevious<CR>
 nnoremap <c-Right> :tabnext<CR>
 
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-
 " Have nerdtree ignore certain files and directories.
 let NERDTreeIgnore=['\.git$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.gif$', '\.db$']
 
@@ -123,12 +118,17 @@ let NERDTreeIgnore=['\.git$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', 
 
 " VISUAL
 "
-colorscheme nord
+"
+set termguicolors
+
+let g:tokyonight_style = 'storm' " available: night, storm
+let g:tokyonight_enable_italic = 1
+colorscheme tokyonight
 hi Comment guifg=#de54d5 ctermfg=blue
 
+
+
 " AIRLINE ++++++++++++++++++++++++++++++++++++++++++++++++
-" Disable this if dont want to use the > and < arrow tips!
-let g:airline_powerline_fonts=1
 
 let g:airline#extensions#tabline#enabled=1
 let g:airline_section_z = "%p%% : %l/%L: Col:%c"
