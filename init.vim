@@ -36,6 +36,7 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf
 filetype indent on
 set smartindent
 set nocompatible
+set nowrap
 " Plugins
 
 call plug#begin('~/.vim/plugged')
@@ -52,8 +53,7 @@ Plug 'ghifarit53/tokyonight-vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" IMPORTANT only plugins of autocomplete source from here
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 call plug#end()
 
@@ -150,8 +150,8 @@ hi PmenuSel ctermfg=NONE ctermbg=24 cterm=NONE guifg=NONE guibg=#204a87 gui=NONE
 " NERDTREE
 " Close NERDTREE if it is the only window in the buffer
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-nnoremap <c-b> :NERDTree<CR>
-nnoremap <c-v> :NERDTreeClose<CR>
+nnoremap <c-v> :NERDTree<CR>
+nnoremap <c-c> :NERDTreeClose<CR>
 let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
 
