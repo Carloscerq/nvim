@@ -106,8 +106,8 @@ nnoremap <c-i> gg =G<CR>
 autocmd FileType xml,html inoremap </ </<C-x><C-o>
 
 " Tabs
-nnoremap <c-Left> :tabprevious<CR>
-nnoremap <c-Right> :tabnext<CR>
+nnoremap <a-l> :bn<CR>
+nnoremap <a-h> :bp<CR>
 
 " Have nerdtree ignore certain files and directories.
 let NERDTreeIgnore=['\.git$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.gif$', '\.db$']
