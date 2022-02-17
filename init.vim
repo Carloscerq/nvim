@@ -37,6 +37,10 @@ filetype indent on
 set smartindent
 set nocompatible
 set nowrap
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+autocmd FileType typescript setlocal ts=2 sts=2 sw=2
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2
+set mouse=a
 " Plugins
 
 call plug#begin('~/.vim/plugged')
@@ -51,9 +55,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 Plug 'morhetz/gruvbox'
-
+Plug 'turbio/bracey.vim'
+Plug 'kassio/neoterm'
 call plug#end()
 
 colorscheme gruvbox
@@ -424,3 +431,6 @@ nmap <C-s> :MarkdownPreview<CR>
 nmap <M-s> :MarkdownPreviewStop<CR>
 nmap <C-p> :MarkdownPreviewToggle<CR>
 
+" NEOTERM
+
+nnoremap <C-t> :T ls <CR>
