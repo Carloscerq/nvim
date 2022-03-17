@@ -31,7 +31,6 @@ set showmatch
 set hlsearch
 set history=100
 set wildmenu
-set wildmode=list:longest
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf
 filetype indent on
 set smartindent
@@ -52,7 +51,6 @@ Plug 'roxma/nvim-yarp'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'prettier/vim-prettier', {
@@ -127,8 +125,6 @@ let NERDTreeIgnore=['\.git$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', 
 "
 "
 set termguicolors
-
-hi Comment guifg=#de54d5 ctermfg=blue
 
 
 
