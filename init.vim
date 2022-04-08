@@ -59,6 +59,7 @@ Plug 'prettier/vim-prettier', {
 Plug 'morhetz/gruvbox'
 Plug 'turbio/bracey.vim'
 Plug 'kassio/neoterm'
+Plug 'APZelos/blamer.nvim'
 call plug#end()
 
 colorscheme gruvbox
@@ -430,3 +431,8 @@ nmap <C-p> :MarkdownPreviewToggle<CR>
 " NEOTERM
 
 nnoremap <C-t> :T ls <CR>
+
+" GITBLAMER
+
+let g:blamer_enabled = 1
+let g:blamer_prefix = ' > '
