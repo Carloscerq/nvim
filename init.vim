@@ -60,9 +60,11 @@ Plug 'morhetz/gruvbox'
 Plug 'turbio/bracey.vim'
 Plug 'kassio/neoterm'
 Plug 'APZelos/blamer.nvim'
+Plug 'aditya-azad/candle-grey'
 call plug#end()
 
-colorscheme gruvbox
+colorscheme candle-grey
+let g:airline_theme = 'base16_black_metal_dark_funeral'
 
 " Keymaps
 "
