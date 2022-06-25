@@ -39,6 +39,7 @@ set nowrap
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 autocmd FileType typescript setlocal ts=2 sts=2 sw=2
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2
+"set listchars=eol:↓,tab:\ \ ┊,trail:●,extends:…,precedes:…,space:·
 set mouse=a
 " Plugins
 
@@ -61,9 +62,13 @@ Plug 'turbio/bracey.vim'
 Plug 'kassio/neoterm'
 Plug 'APZelos/blamer.nvim'
 Plug 'aditya-azad/candle-grey'
+Plug 'Yggdroot/indentLine'
 call plug#end()
 
+let g:indentLine_char = '▏'
+
 colorscheme candle-grey
+highlight Comment  guifg=#a26a4d ctermfg=darkred
 let g:airline_theme = 'base16_black_metal_dark_funeral'
 
 " Keymaps
