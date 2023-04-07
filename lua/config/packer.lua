@@ -14,10 +14,10 @@ return require('packer').startup(function(use)
   }
 
   use {
-	  'shaunsingh/nord.nvim',
-	  as = 'nord',
-	  config = function()
-		  vim.cmd('colorscheme nord')
+    'catppuccin/nvim',
+    as = 'catppuccin',
+    config = function()
+		  vim.cmd('colorscheme catppuccin-mocha')
 	  end
   }
 
@@ -51,7 +51,5 @@ return require('packer').startup(function(use)
 	  }
   }
 
-  use 'vim-airline/vim-airline'
-  use 'vim-airline/vim-airline-themes'
   use 'sbdchd/neoformat'
 end)
