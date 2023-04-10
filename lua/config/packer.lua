@@ -14,10 +14,10 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'catppuccin/nvim',
-    as = 'catppuccin',
+    'folke/tokyonight.nvim',
+    as = 'tokyonight',
     config = function()
-		  vim.cmd('colorscheme catppuccin-mocha')
+		  vim.cmd('colorscheme tokyonight')
 	  end
   }
 
