@@ -52,4 +52,7 @@ return require('packer').startup(function(use)
   }
 
   use 'sbdchd/neoformat'
+
+  use 'nvim-tree/nvim-web-devicons'
+  use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
 end)
