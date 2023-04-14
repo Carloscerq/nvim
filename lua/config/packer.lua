@@ -65,4 +65,6 @@ return require('packer').startup(function(use)
     require("nvim-tree").setup {}
     end
   }
+
+  use "numToStr/FTerm.nvim"
 end)
