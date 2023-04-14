@@ -55,4 +55,14 @@ return require('packer').startup(function(use)
 
   use 'nvim-tree/nvim-web-devicons'
   use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
+
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional
+    },
+    config = function()
+    require("nvim-tree").setup {}
+    end
+  }
 end)
