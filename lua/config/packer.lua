@@ -14,19 +14,15 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'folke/tokyonight.nvim',
-    as = 'tokyonight',
-    config = function()
-		  vim.cmd('colorscheme tokyonight')
-	  end
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
   }
 
   use {
-	  'nvim-treesitter/nvim-treesitter',
-	  {
-		  run= ':TSUpdate'
-	  }
+    'folke/tokyonight.nvim',
+    as = 'tokyonight'
   }
+
   use 'nvim-treesitter/playground'
 
   use {
@@ -67,4 +63,12 @@ return require('packer').startup(function(use)
   }
 
   use "numToStr/FTerm.nvim"
+
+  use({
+	  "L3MON4D3/LuaSnip",
+	  tag = "v1.*",
+	  run = "make install_jsregexp"
+  })
+
+  use "rafamadriz/friendly-snippets"
 end)
