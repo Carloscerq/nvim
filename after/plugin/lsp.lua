@@ -1,17 +1,13 @@
-local lsp = require('lsp-zero')
-local cmp = require('cmp')
-
-lsp.preset('recommended')
-
-lsp.ensure_installed({
-  'tsserver',
-  'eslint',
-  'rust_analyzer',
+local lsp = require('lsp-zero').preset({
+  manage_nvim_cmp = {
+    set_extra_mappings = true,
+  }
 })
+local cmp = require('cmp')
 
 cmp.setup({
   mapping = {
-    ['<CR>'] = cmp.mapping.confirm({select = false}),
+    ['<CR>'] = cmp.mapping.confirm({select = false})
   }
 })
 
