@@ -21,6 +21,10 @@ require("lazy").setup({
    as = 'tokyonight'
   },
   {
+    'aditya-azad/candle-grey',
+    as = 'candle-grey'
+  },
+  {
     'nvim-tree/nvim-tree.lua',
     requires = {
       'nvim-tree/nvim-web-devicons', -- optional
@@ -32,6 +36,7 @@ require("lazy").setup({
   "numToStr/FTerm.nvim",
   'sbdchd/neoformat',
   'github/copilot.vim',
+  'christoomey/vim-tmux-navigator',
   {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v3.x',
