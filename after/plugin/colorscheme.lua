@@ -1,1 +1,1 @@
-vim.cmd("colorscheme candle-grey")
+vim.cmd("colorscheme candle-grey-transparent")
