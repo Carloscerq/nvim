@@ -21,10 +21,6 @@ require("lazy").setup({
    as = 'tokyonight'
   },
   {
-    'aditya-azad/candle-grey',
-    as = 'candle-grey'
-  },
-  {
     'nvim-tree/nvim-tree.lua',
     requires = {
       'nvim-tree/nvim-web-devicons', -- optional
