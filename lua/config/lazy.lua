@@ -21,6 +21,10 @@ require("lazy").setup({
    as = 'tokyonight'
   },
   {
+    'catppuccin/nvim',
+    as = 'catppuccin'
+  },
+  {
     'nvim-tree/nvim-tree.lua',
     requires = {
       'nvim-tree/nvim-web-devicons', -- optional
@@ -33,6 +37,7 @@ require("lazy").setup({
   'sbdchd/neoformat',
   'github/copilot.vim',
   'christoomey/vim-tmux-navigator',
+  'airblade/vim-gitgutter',
   {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v3.x',
