@@ -17,10 +17,6 @@ require("lazy").setup({
    dependencies = { 'nvim-lua/plenary.nvim' }
   },
   {
-   'folke/tokyonight.nvim',
-   as = 'tokyonight'
-  },
-  {
     'catppuccin/nvim',
     as = 'catppuccin'
   },
@@ -33,9 +29,7 @@ require("lazy").setup({
     require("nvim-tree").setup {}
     end
   },
-  "numToStr/FTerm.nvim",
   'sbdchd/neoformat',
-  'github/copilot.vim',
   'christoomey/vim-tmux-navigator',
   'airblade/vim-gitgutter',
   {
