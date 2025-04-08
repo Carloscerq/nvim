@@ -21,6 +21,10 @@ require("lazy").setup({
     as = 'catppuccin'
   },
   {
+    'nordtheme/vim',
+    as = 'nord'
+  },
+  {
     'nvim-tree/nvim-tree.lua',
     requires = {
       'nvim-tree/nvim-web-devicons', -- optional
