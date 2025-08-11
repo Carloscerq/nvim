@@ -91,29 +91,69 @@ require("lazy").setup({
       {'hrsh7th/cmp-nvim-lsp'},
       {'williamboman/mason-lspconfig.nvim'},
     },
-    config = function()
-      -- This is where all the LSP shenanigans will live
-      local lsp_zero = require('lsp-zero')
-      lsp_zero.extend_lspconfig()
+config = function()
+  local lsp_zero = require('lsp-zero')
+  lsp_zero.extend_lspconfig()
 
-      lsp_zero.on_attach(function(client, bufnr)
-        -- see :help lsp-zero-keybindings
-        -- to learn the available actions
-        lsp_zero.default_keymaps({buffer = bufnr})
-      end)
+  -- Shared popup size settings
+  local float_opts = { max_width = 120, max_height = 40, border = "rounded" }
 
-      require('mason-lspconfig').setup({
-        ensure_installed = {},
-        handlers = {
-          lsp_zero.default_setup,
-          lua_ls = function()
-            -- (Optional) Configure lua language server for neovim
-            local lua_opts = lsp_zero.nvim_lua_ls()
-            require('lspconfig').lua_ls.setup(lua_opts)
-          end,
-        }
-      })
-    end
+  -- Apply bigger popups for hover and signature help
+  vim.lsp.handlers["textDocument/hover"] =
+    vim.lsp.with(vim.lsp.handlers.hover, float_opts)
+  vim.lsp.handlers["textDocument/signatureHelp"] =
+    vim.lsp.with(vim.lsp.handlers.signature_help, float_opts)
+
+  -- Configure diagnostics
+  vim.diagnostic.config({
+    virtual_text = {
+      prefix = "●", -- icon for inline diagnostics
+      spacing = 2,
+      severity = { min = vim.diagnostic.severity.WARN }, -- show only WARN and above inline
+    },
+    signs = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
+    float = float_opts,
+  })
+
+  lsp_zero.on_attach(function(client, bufnr)
+    -- Default lsp-zero keymaps
+    lsp_zero.default_keymaps({buffer = bufnr})
+
+    -- Scroll inside popups with Alt+j / Alt+k
+    local opts = {silent = true, noremap = true, buffer = bufnr}
+    vim.keymap.set('n', '<M-j>', function()
+      vim.lsp.util.scroll(1)
+    end, opts)
+    vim.keymap.set('n', '<M-k>', function()
+      vim.lsp.util.scroll(-1)
+    end, opts)
+
+    -- Show diagnostics under cursor in a popup
+    vim.keymap.set('n', '<leader>ld', function()
+      vim.diagnostic.open_float(nil, {focus=true})
+    end, {buffer = bufnr, desc = 'Line diagnostics'})
+
+    -- Show hover docs in a split
+    vim.keymap.set('n', '<leader>lh', function()
+      vim.lsp.buf.hover()
+      vim.cmd('wincmd L')
+    end, {buffer = bufnr, desc = 'LSP hover in split'})
+  end)
+
+  require('mason-lspconfig').setup({
+    ensure_installed = {},
+    handlers = {
+      lsp_zero.default_setup,
+      lua_ls = function()
+        local lua_opts = lsp_zero.nvim_lua_ls()
+        require('lspconfig').lua_ls.setup(lua_opts)
+      end,
+    }
+  })
+end
   },
   {'romgrk/barbar.nvim',
     dependencies = {
